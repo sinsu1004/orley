@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>몸으로 말해요 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎭 몸으로 말해요 게임</h1>
+            <div class="game-info">
+                <div class="timer-section">
+                    <div class="setting-group">
+                        <label for="timer-select">타이머:</label>
+                        <select id="timer-select">
+                            <option value="60">1분</option>
+                            <option value="120" selected>2분</option>
+                            <option value="180">3분</option>
+                            <option value="300">5분</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="pass-limit-input">PASS 제한:</label>
+                        <input type="number" id="pass-limit-input" min="0" max="50" value="3" placeholder="0=무제한">
+                    </div>
+                    <div class="setting-group">
+                        <label for="question-limit-input">문제 개수:</label>
+                        <input type="number" id="question-limit-input" min="5" max="50" value="30" placeholder="30">
+                    </div>
+                    <button id="start-btn" class="btn-primary">게임 시작</button>
+                    <button id="back-to-theme-btn" class="btn-secondary" style="display: none;">테마 다시 선택</button>
+                    <button id="manage-words-btn" class="btn-secondary">제시어 관리</button>
+                </div>
+                <div class="score-section">
+                    <div class="timer-display">
+                        <span>남은 시간: </span>
+                        <span id="time-display">0:00</span>
+                    </div>
+                    <div class="score-display">
+                        <span>정답: </span>
+                        <span id="score">0</span>점
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="theme-selection" id="theme-selection">
+                <h2>테마를 선택하세요</h2>
+                <div class="theme-buttons">
+                    <button class="theme-btn" data-theme="animals">🐾 동물</button>
+                    <button class="theme-btn" data-theme="sports">⚽ 스포츠</button>
+                    <button class="theme-btn" data-theme="jobs">💼 직업</button>
+                    <button class="theme-btn" data-theme="movies">🎬 영화</button>
+                </div>
+            </div>
+
+            <div class="game-screen" id="game-screen" style="display: none;">
+                <div class="question-card">
+                    <div class="question-text" id="question-text">문제가 여기에 표시됩니다</div>
+                    <div class="action-buttons">
+                        <button id="correct-btn" class="btn-success">정답! ✅</button>
+                        <button id="pass-btn" class="btn-warning">PASS 🔄</button>
+                        <button id="stop-game-btn" class="btn-danger">게임 종료</button>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <span id="question-counter">문제 1</span>
+                    <span id="score-display-game">점수: 0점</span>
+                    <span id="pass-display-game">PASS: 0/3</span>
+                </div>
+            </div>
+
+            <div class="game-end" id="game-end" style="display: none;">
+                <h2 id="game-end-title">🎉 게임 종료!</h2>
+                <div class="game-result">
+                    <div class="final-score">
+                        <span>최종 점수: </span>
+                        <span id="final-score">0</span>점
+                    </div>
+                    <div class="game-stats" id="game-stats" style="display: none;">
+                        <div class="stat-item">
+                            <span>총 문제 수: </span>
+                            <span id="total-questions">0</span>개
+                        </div>
+                        <div class="stat-item">
+                            <span>정답률: </span>
+                            <span id="accuracy-rate">0</span>%
+                        </div>
+                        <div class="stat-item" id="remaining-time-stat" style="display: none;">
+                            <span>남은 시간: </span>
+                            <span id="remaining-time">0:00</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="restart-btn" class="btn-primary">다시 시작</button>
+            </div>
+
+            <div class="word-management" id="word-management" style="display: none;">
+                <h2>📝 제시어 관리</h2>
+                <div class="word-tabs">
+                    <button class="word-tab active" data-theme="animals">🐾 동물</button>
+                    <button class="word-tab" data-theme="sports">⚽ 스포츠</button>
+                    <button class="word-tab" data-theme="jobs">💼 직업</button>
+                    <button class="word-tab" data-theme="movies">🎬 영화</button>
+                </div>
+                <div class="word-controls">
+                    <div class="add-word-section">
+                        <input type="text" id="new-word-input" placeholder="새 제시어 입력" maxlength="20">
+                        <button id="add-word-btn" class="btn-success">추가</button>
+                    </div>
+                    <div class="word-stats">
+                        <span id="word-count">총 0개 제시어</span>
+                    </div>
+                </div>
+                <div class="word-list" id="word-list">
+                    <!-- 제시어 목록이 여기에 동적으로 생성됩니다 -->
+                </div>
+                <div class="word-management-buttons">
+                    <button id="save-words-btn" class="btn-primary">저장</button>
+                    <button id="reset-words-btn" class="btn-warning">초기화</button>
+                    <button id="close-management-btn" class="btn-secondary">닫기</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
