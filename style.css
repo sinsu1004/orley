@@ -426,6 +426,39 @@ body {
     .game-area {
         padding: 30px;
     }
+    
+    /* 전체화면 모드에서 가로로 회전시 버튼을 가로로 배치 */
+    .fullscreen-mode .action-buttons {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        bottom: 60px !important;
+        gap: 60px !important;
+        width: auto !important;
+        max-width: 90% !important;
+    }
+    
+    .fullscreen-mode .action-buttons button {
+        flex: 0 0 auto !important;
+        min-width: 140px !important;
+        white-space: nowrap !important;
+    }
+    
+    .fullscreen-mode .question-text {
+        font-size: clamp(8rem, 18vmin, 25rem) !important;
+        padding: 1vmin !important;
+        line-height: 0.7 !important;
+        max-height: 60vh !important;
+    }
+    
+    .fullscreen-mode .progress-info {
+        bottom: 15px !important;
+        gap: 40px !important;
+    }
+    
+    .fullscreen-timer {
+        font-size: 2rem !important;
+        top: 20px !important;
+    }
 }
 
 /* 아이패드 세로 모드에서 제시어 극대화 */
@@ -485,16 +518,21 @@ body {
 }
 
 .fullscreen-mode .question-text {
-    font-size: 8rem !important;
+    font-size: clamp(8rem, 20vmin, 25rem) !important;
     min-height: auto !important;
-    padding: 40px !important;
-    line-height: 0.9 !important;
+    padding: 2vmin !important;
+    line-height: 0.8 !important;
     text-align: center !important;
     flex: 1 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
+    font-weight: 900 !important;
+    max-height: 70vh !important;
+    overflow: hidden !important;
+    word-break: keep-all !important;
+    hyphens: none !important;
 }
 
 .fullscreen-mode .action-buttons {
@@ -575,8 +613,10 @@ body {
 /* 전체화면 모드에서 모바일 최적화 */
 @media (max-width: 767px) {
     .fullscreen-mode .question-text {
-        font-size: 5rem !important;
-        padding: 30px !important;
+        font-size: clamp(6rem, 18vmin, 20rem) !important;
+        padding: 1vmin !important;
+        line-height: 0.7 !important;
+        max-height: 65vh !important;
     }
     
     .fullscreen-mode .action-buttons {
@@ -600,9 +640,10 @@ body {
 /* 전체화면 모드에서 아이패드 최적화 */
 @media (min-width: 768px) and (max-width: 1024px) {
     .fullscreen-mode .question-text {
-        font-size: 10rem !important;
-        padding: 60px !important;
-        line-height: 0.8 !important;
+        font-size: clamp(12rem, 25vmin, 35rem) !important;
+        padding: 2vmin !important;
+        line-height: 0.7 !important;
+        max-height: 70vh !important;
     }
     
     .fullscreen-mode .action-buttons {
@@ -626,8 +667,10 @@ body {
 /* 전체화면 모드에서 큰 화면 최적화 */
 @media (min-width: 1025px) {
     .fullscreen-mode .question-text {
-        font-size: 9rem !important;
-        padding: 80px !important;
+        font-size: clamp(15rem, 22vmin, 40rem) !important;
+        padding: 2vmin !important;
+        line-height: 0.7 !important;
+        max-height: 75vh !important;
     }
     
     .fullscreen-mode .action-buttons {
@@ -641,6 +684,64 @@ body {
     .fullscreen-timer {
         font-size: 2.2rem !important;
         padding: 12px 24px !important;
+    }
+}
+
+/* 모든 가로 모드에서 전체화면 버튼 가로 배치 */
+@media screen and (orientation: landscape) and (max-height: 800px) {
+    .fullscreen-mode .action-buttons {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 40px !important;
+        width: auto !important;
+        max-width: 85% !important;
+    }
+    
+    .fullscreen-mode .question-text {
+        font-size: clamp(6rem, 16vmin, 22rem) !important;
+        padding: 1vmin !important;
+        line-height: 0.7 !important;
+        max-height: 55vh !important;
+    }
+    
+    .fullscreen-mode .action-buttons button {
+        flex: 0 0 auto !important;
+        min-width: 120px !important;
+        white-space: nowrap !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* 작은 화면 가로 모드 (폰 등) */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .fullscreen-mode .question-text {
+        font-size: clamp(4rem, 12vmin, 15rem) !important;
+        padding: 0.5vmin !important;
+        line-height: 0.8 !important;
+        max-height: 45vh !important;
+    }
+    
+    .fullscreen-mode .action-buttons {
+        bottom: 30px !important;
+        gap: 20px !important;
+    }
+    
+    .fullscreen-mode .action-buttons button {
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+        min-width: 100px !important;
+    }
+    
+    .fullscreen-mode .progress-info {
+        bottom: 5px !important;
+        font-size: 0.9rem !important;
+        gap: 15px !important;
+    }
+    
+    .fullscreen-timer {
+        font-size: 1.2rem !important;
+        padding: 5px 10px !important;
+        top: 10px !important;
     }
 }
 
